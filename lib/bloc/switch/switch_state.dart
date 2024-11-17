@@ -1,5 +1,6 @@
 part of 'switch_bloc.dart';
 
+// ignore: must_be_immutable
 class SwitchState extends Equatable {
   bool isSwitch;
   double slider;
@@ -15,4 +16,5 @@ class SwitchState extends Equatable {
   List<Object> get props => [isSwitch, slider];
 }
 
+// ignore: must_be_immutable
 final class SwitchInitial extends SwitchState {}
