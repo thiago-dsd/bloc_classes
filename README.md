@@ -16,10 +16,8 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 
 ## Repository Structure
 
-- `01_counter_app/`: A basic counter app to demonstrate the Bloc pattern.
-- `02_todo_app/`: A simple to-do app showcasing state transitions and event handling.
-- `03_complex_scenarios/`: Advanced examples with nested Blocs and Cubits.
-- `documentation/`: Notes and explanations about key concepts of the Bloc library.
+- `counter`: A basic counter app to demonstrate the Bloc pattern.
+- `switch`: A simple switch showcasing state transitions and event handling.
 
 ## Prerequisites
 
