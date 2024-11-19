@@ -7,7 +7,8 @@ class FavouriteAppState extends Equatable {
   final List<FavouriteItemModel> favouriteItemList;
 
   const FavouriteAppState(
-      {this.listStatus = ListStatus.loading, this.favouriteItemList = const []});
+      {this.listStatus = ListStatus.loading,
+      this.favouriteItemList = const []});
 
   FavouriteAppState copyWith(
       {ListStatus? listStatus, List<FavouriteItemModel>? favouriteItemList}) {
@@ -19,5 +20,3 @@ class FavouriteAppState extends Equatable {
   @override
   List<Object> get props => [listStatus, favouriteItemList];
 }
-
-final class FavouriteAppInitial extends FavouriteAppState {}
