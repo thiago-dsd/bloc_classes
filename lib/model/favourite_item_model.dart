@@ -23,6 +23,5 @@ class FavouriteItemModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, value, isDeleting, isFavourite];
 }

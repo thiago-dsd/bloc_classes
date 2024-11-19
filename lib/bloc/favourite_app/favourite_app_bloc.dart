@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_classes/model/favourite_item_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'favourite_app_event.dart';
