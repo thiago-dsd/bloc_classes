@@ -1,6 +1,6 @@
-import 'package:bloc_classes/bloc/bloc/todo_bloc.dart';
 import 'package:bloc_classes/bloc/image_picker/image_picker_bloc.dart';
 import 'package:bloc_classes/bloc/switch/switch_bloc.dart';
+import 'package:bloc_classes/bloc/todo/todo_bloc.dart';
 import 'package:bloc_classes/ui/todo/to_do_screen.dart';
 import 'package:bloc_classes/utils/image_picker_utils.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +33,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        themeMode: ThemeMode.dark,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          brightness: Brightness.dark,
           useMaterial3: true,
         ),
         home: const ToDoScreen(),
