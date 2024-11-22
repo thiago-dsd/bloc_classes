@@ -23,6 +23,20 @@ class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Favourite App"),
+        actions: [
+          BlocBuilder<FavouriteAppBloc, FavouriteAppState>(
+            builder: (context, state) {
+              return Visibility(
+                visible: state.temporaryFavouriteItemList.isNotEmpty,
+                child: IconButton(
+                    onPressed: () {
+                      context.read<FavouriteAppBloc>().add(DelteItem());
+                    },
+                    icon: const Icon(Icons.delete, color: Colors.red)),
+              );
+            },
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

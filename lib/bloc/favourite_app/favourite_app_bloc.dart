@@ -32,8 +32,23 @@ class FavouriteAppBloc extends Bloc<FavouriteAppEvent, FavouriteAppState> {
       FavoriteItem event, Emitter<FavouriteAppState> emit) async {
     final index =
         favouriteList.indexWhere((element) => element.id == event.item.id);
+
+    if (event.item.isFavourite) {
+      if (temporaryFavouriteItemList.contains(event.item)) {
+        temporaryFavouriteItemList.remove(favouriteList[index]);
+        temporaryFavouriteItemList.add(favouriteList[index]);
+      }
+    } else {
+      if (temporaryFavouriteItemList.contains(event.item)) {
+        temporaryFavouriteItemList.remove(favouriteList[index]);
+        temporaryFavouriteItemList.add(favouriteList[index]);
+      }
+    }
+
     favouriteList[index] = event.item;
-    emit(state.copyWith(favouriteItemList: List.from(favouriteList)));
+    emit(state.copyWith(
+        favouriteItemList: List.from(favouriteList),
+        temporaryFavouriteItemList: List.from(temporaryFavouriteItemList)));
   }
 
   void _selectedItem(
@@ -57,6 +72,8 @@ class FavouriteAppBloc extends Bloc<FavouriteAppEvent, FavouriteAppState> {
     }
     temporaryFavouriteItemList.clear();
 
-    emit(state.copyWith(favouriteItemList: List.from(favouriteList)));
+    emit(state.copyWith(
+        favouriteItemList: List.from(favouriteList),
+        temporaryFavouriteItemList: List.from(temporaryFavouriteItemList)));
   }
 }
