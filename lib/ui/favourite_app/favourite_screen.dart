@@ -37,6 +37,23 @@ class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
                       return Card(
                         child: ListTile(
                           title: Text(currentItem.value),
+                          trailing: IconButton(
+                            onPressed: () {
+                              FavouriteItemModel favouriteItemModel =
+                                  FavouriteItemModel(
+                                      id: currentItem.id,
+                                      value: currentItem.value,
+                                      isFavourite: currentItem.isFavourite
+                                          ? false
+                                          : true);
+                              context
+                                  .read<FavouriteAppBloc>()
+                                  .add(FavoriteItem(item: favouriteItemModel));
+                            },
+                            icon: Icon(currentItem.isFavourite
+                                ? Icons.favorite
+                                : Icons.favorite_outline),
+                          ),
                         ),
                       );
                     });

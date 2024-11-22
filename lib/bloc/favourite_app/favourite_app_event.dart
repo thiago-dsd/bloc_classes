@@ -7,4 +7,10 @@ sealed class FavouriteAppEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchFavouriteList extends FavouriteAppEvent{}
+class FetchFavouriteList extends FavouriteAppEvent {}
+
+class FavoriteItem extends FavouriteAppEvent {
+  final FavouriteItemModel item;
+
+  const FavoriteItem({required this.item});
+}

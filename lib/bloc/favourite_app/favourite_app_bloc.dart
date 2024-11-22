@@ -13,6 +13,7 @@ class FavouriteAppBloc extends Bloc<FavouriteAppEvent, FavouriteAppState> {
   FavouriteAppBloc(this.favouriteRepository)
       : super(const FavouriteAppState()) {
     on<FetchFavouriteList>(_fetchFavouriteList);
+    on<FavoriteItem>(_favoriteItem);
   }
 
   void _fetchFavouriteList(
@@ -21,5 +22,13 @@ class FavouriteAppBloc extends Bloc<FavouriteAppEvent, FavouriteAppState> {
     emit(state.copyWith(
         favouriteItemList: List.from(favouriteList),
         listStatus: ListStatus.sucess));
+  }
+
+  void _favoriteItem(
+      FavoriteItem event, Emitter<FavouriteAppState> emit) async {
+    final index =
+        favouriteList.indexWhere((element) => element.id == event.item.id);
+    favouriteList[index] = event.item;
+    emit(state.copyWith(favouriteItemList: List.from(favouriteList)));
   }
 }

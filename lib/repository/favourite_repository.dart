@@ -10,6 +10,6 @@ class FavouriteRepository {
     return List.generate(
         length,
         (index) =>
-            FavouriteItemModel(id: length.toString(), value: "Item $index"));
+            FavouriteItemModel(id: index.toString(), value: "Item $index"));
   }
 }
