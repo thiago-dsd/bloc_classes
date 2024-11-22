@@ -1,4 +1,5 @@
 import 'package:bloc_classes/bloc/favourite_app/favourite_app_bloc.dart';
+import 'package:bloc_classes/bloc/todo/todo_bloc.dart';
 import 'package:bloc_classes/model/favourite_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +37,21 @@ class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
                           state.favouriteItemList[index];
                       return Card(
                         child: ListTile(
+                          leading: Checkbox(
+                            value: state.temporaryFavouriteItemList
+                                    .contains(currentItem)
+                                ? true
+                                : false,
+                            onChanged: (value) {
+                              value!
+                                  ? context
+                                      .read<FavouriteAppBloc>()
+                                      .add(SelectedItem(item: currentItem))
+                                  : context
+                                      .read<FavouriteAppBloc>()
+                                      .add(UnSelectedItem(item: currentItem));
+                            },
+                          ),
                           title: Text(currentItem.value),
                           trailing: IconButton(
                             onPressed: () {
