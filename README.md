@@ -18,6 +18,8 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 
 - `counter`: A basic counter app to demonstrate the Bloc pattern.
 - `switch`: A simple switch showcasing state transitions and event handling.
+- `todo`: A task management application where users can add, remove, and mark tasks as complete, demonstrating the use of Bloc for state management and event-driven updates.
+- `favorite`: A favorite management application where users can add items to their favorites, toggle their favorite status, and filter favorite items, showcasing state transitions and event-driven logic with Bloc.
 
 ## Prerequisites
 
