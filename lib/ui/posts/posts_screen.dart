@@ -39,17 +39,29 @@ class _PostsScreenState extends State<PostsScreen> {
                     },
                   ),
                   Expanded(
-                    child: ListView.builder(
-                        itemCount: state.temPostList.isEmpty
-                            ? state.postList.length
-                            : state.temPostList.length,
-                        itemBuilder: (context, index) {
-                          final PostModel currentPost = state.postList[index];
-                          return ListTile(
-                            title: Text(currentPost.email.toString()),
-                            subtitle: Text(currentPost.name.toString()),
-                          );
-                        }),
+                    child: state.searchMessage.isNotEmpty
+                        ? Center(child: Text(state.searchMessage.toString()))
+                        : ListView.builder(
+                            itemCount: state.temPostList.isEmpty
+                                ? state.postList.length
+                                : state.temPostList.length,
+                            itemBuilder: (context, index) {
+                              if (state.temPostList.isEmpty) {
+                                final PostModel currentPost =
+                                    state.postList[index];
+                                return ListTile(
+                                  title: Text(currentPost.email.toString()),
+                                  subtitle: Text(currentPost.name.toString()),
+                                );
+                              } else {
+                                final PostModel currentPost =
+                                    state.temPostList[index];
+                                return ListTile(
+                                  title: Text(currentPost.email.toString()),
+                                  subtitle: Text(currentPost.name.toString()),
+                                );
+                              }
+                            }),
                   ),
                 ],
               );

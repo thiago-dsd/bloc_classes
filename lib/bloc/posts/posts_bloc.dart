@@ -27,9 +27,25 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   }
 
   void _searchItem(SearchItem event, Emitter<PostsState> emit) async {
-    temPostList = state.postList
-        .where((element) => element.id.toString() == event.strSearch)
-        .toList();
-    emit(state.copyWith(temPostList: temPostList));
+    if (event.strSearch.isEmpty) {
+      emit(state.copyWith(temPostList: [], searchMessage: ""));
+    } else {
+      // temPostList = state.postList
+      //     .where((element) => element.id.toString() == event.strSearch)
+      //     .toList();
+      temPostList = state.postList
+          .where((element) => element.email
+              .toString()
+              .toLowerCase()
+              .contains(event.strSearch.toLowerCase()))
+          .toList();
+
+      if (temPostList.isEmpty) {
+        emit(state.copyWith(
+            temPostList: temPostList, searchMessage: "No data found"));
+      } else {
+        emit(state.copyWith(temPostList: temPostList));
+      }
+    }
   }
 }

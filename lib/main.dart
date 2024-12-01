@@ -4,6 +4,7 @@ import 'package:bloc_classes/bloc/posts/posts_bloc.dart';
 import 'package:bloc_classes/bloc/switch/switch_bloc.dart';
 import 'package:bloc_classes/bloc/todo/todo_bloc.dart';
 import 'package:bloc_classes/repository/favourite_repository.dart';
+import 'package:bloc_classes/ui/counter/counter_screen.dart';
 import 'package:bloc_classes/ui/favourite_app/favourite_screen.dart';
 import 'package:bloc_classes/ui/posts/posts_screen.dart';
 import 'package:bloc_classes/utils/image_picker_utils.dart';
@@ -22,9 +23,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => CounterBloc(),
-        ),
         BlocProvider(
           create: (_) => SwitchBloc(),
         ),
@@ -48,7 +46,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
-        home: const PostsScreen(),
+        home: const CounterScreen(),
       ),
     );
   }
