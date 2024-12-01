@@ -28,15 +28,31 @@ class _PostsScreenState extends State<PostsScreen> {
         builder: (context, state) {
           switch (state.postStatus) {
             case PostStatus.success:
-              return ListView.builder(
-                  itemCount: state.postList.length,
-                  itemBuilder: (context, index) {
-                    final PostModel currentPost = state.postList[index];
-                    return ListTile(
-                      title: Text(currentPost.email.toString()),
-                      subtitle: Text(currentPost.name.toString()),
-                    );
-                  });
+              return Column(
+                children: [
+                  TextFormField(
+                    decoration: const InputDecoration(
+                        hintText: "Search with email",
+                        border: OutlineInputBorder()),
+                    onChanged: (filterKey) {
+                      context.read<PostsBloc>().add(SearchItem(filterKey));
+                    },
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: state.temPostList.isEmpty
+                            ? state.postList.length
+                            : state.temPostList.length,
+                        itemBuilder: (context, index) {
+                          final PostModel currentPost = state.postList[index];
+                          return ListTile(
+                            title: Text(currentPost.email.toString()),
+                            subtitle: Text(currentPost.name.toString()),
+                          );
+                        }),
+                  ),
+                ],
+              );
             case PostStatus.failure:
               return Center(
                   child: Text(

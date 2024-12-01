@@ -8,10 +8,12 @@ part 'posts_event.dart';
 part 'posts_state.dart';
 
 class PostsBloc extends Bloc<PostsEvent, PostsState> {
+  List<PostModel> temPostList = [];
   PostRepository postRepository = PostRepository();
 
   PostsBloc() : super(const PostsState()) {
     on<PostFetched>(_fetchPostApi);
+    on<SearchItem>(_searchItem);
   }
 
   void _fetchPostApi(PostFetched event, Emitter<PostsState> emit) async {
@@ -22,5 +24,12 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
       emit(state.copyWith(
           status: PostStatus.success, message: error.toString()));
     });
+  }
+
+  void _searchItem(SearchItem event, Emitter<PostsState> emit) async {
+    temPostList = state.postList
+        .where((element) => element.id.toString() == event.strSearch)
+        .toList();
+    emit(state.copyWith(temPostList: temPostList));
   }
 }
