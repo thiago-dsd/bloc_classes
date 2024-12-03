@@ -1,4 +1,6 @@
+import 'package:bloc_classes/bloc/login/login_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,7 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
               focusNode: emailFocusNode,
               decoration: const InputDecoration(
                   hintText: "Email", border: OutlineInputBorder()),
-              onChanged: (value) {},
+              onChanged: (value) {
+                context.read<LoginBloc>().add(EmailChanged(email: value));
+              },
               onFieldSubmitted: (value) {},
             ),
             const SizedBox(
@@ -39,13 +43,19 @@ class _LoginScreenState extends State<LoginScreen> {
               focusNode: passwordFocusNode,
               decoration: const InputDecoration(
                   hintText: "Email", border: OutlineInputBorder()),
-              onChanged: (value) {},
+              onChanged: (value) {
+                context.read<LoginBloc>().add(PasswordChanged(password: value));
+              },
               onFieldSubmitted: (value) {},
             ),
             const SizedBox(
               height: 50,
             ),
-            ElevatedButton(onPressed: () {}, child: const Text("Login"))
+            ElevatedButton(
+                onPressed: () {
+                  context.read<LoginBloc>().add(LoginApi());
+                },
+                child: const Text("Login"))
           ],
         ),
       ),
