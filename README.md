@@ -22,6 +22,7 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 - `favorite`: A favorite management application where users can add items to their favorites, toggle their favorite status, and filter favorite items, showcasing state transitions and event-driven logic with Bloc.
 - `image_picker`: An image picker that allows users to select a photo from the gallery or capture a new one using the camera, handling the states and events related to image selection.
 - `posts`: A basic CRUD for posts. Focused on data manipulation and simple user interaction.
+- `login`: A basic CRUD for login.
 
 
 ## Prerequisites
