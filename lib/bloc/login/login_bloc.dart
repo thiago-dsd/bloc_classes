@@ -28,7 +28,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Map data = {"email": state.email, "password": state.password};
 
     try {
-      final response = await http.post(Uri.parse(""), body: data);
+      final response =
+          await http.post(Uri.parse("https://reqres.in/api/login"), body: data);
     } catch (e) {
       emit(state.copyWith(
           loginStatus: LoginStatus.error,
