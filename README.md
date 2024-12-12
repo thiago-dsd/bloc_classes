@@ -34,9 +34,6 @@ Before diving into the examples, ensure you have the following installed:
 
 ## How to Use
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/flutter-bloc-study.git
-2. Run project
+1. Run project
     ```bash
     flutter run
