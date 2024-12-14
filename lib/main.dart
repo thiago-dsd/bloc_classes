@@ -4,14 +4,10 @@ import 'package:bloc_classes/bloc/posts/posts_bloc.dart';
 import 'package:bloc_classes/bloc/switch/switch_bloc.dart';
 import 'package:bloc_classes/bloc/todo/todo_bloc.dart';
 import 'package:bloc_classes/repository/favourite_repository.dart';
-import 'package:bloc_classes/ui/counter/counter_screen.dart';
-import 'package:bloc_classes/ui/favourite_app/favourite_screen.dart';
 import 'package:bloc_classes/ui/login/login_screen.dart';
-import 'package:bloc_classes/ui/posts/posts_screen.dart';
 import 'package:bloc_classes/utils/image_picker_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc_classes/bloc/counter/counter_bloc.dart';
 
 void main() {
   runApp(const MyApp());

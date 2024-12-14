@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.text,
                     focusNode: passwordFocusNode,
                     decoration: const InputDecoration(
-                        hintText: "Email", border: OutlineInputBorder()),
+                        hintText: "Password", border: OutlineInputBorder()),
                     onChanged: (value) {
                       context
                           .read<LoginBloc>()
@@ -80,11 +80,36 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 50,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    context.read<LoginBloc>().add(LoginApi());
+              BlocListener<LoginBloc, LoginState>(
+                listener: (context, state) {
+                  if (state.loginStatus == LoginStatus.error) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                          SnackBar(content: Text(state.message.toString())));
+                  } else if (state.loginStatus == LoginStatus.loading) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                          const SnackBar(content: Text("submitting")));
+                  } else if (state.loginStatus == LoginStatus.sucess) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                          const SnackBar(content: Text("Login succesfull")));
+                  }
+                },
+                child: BlocBuilder<LoginBloc, LoginState>(
+                  buildWhen: (current, previous) => false,
+                  builder: (context, state) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          context.read<LoginBloc>().add(LoginApi());
+                        },
+                        child: const Text("Login"));
                   },
-                  child: const Text("Login"))
+                ),
+              )
             ],
           ),
         ),
