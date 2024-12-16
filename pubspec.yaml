@@ -20,6 +20,8 @@ dependencies:
   bloc: ^8.1.4
   image_picker: ^1.0.8
   http: ^1.2.0
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
