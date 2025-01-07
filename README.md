@@ -16,6 +16,7 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 
 ## Repository Structure
 
+# State management
 - `counter`: A basic counter app to demonstrate the Bloc pattern.
 - `switch`: A simple switch showcasing state transitions and event handling.
 - `todo`: A task management application where users can add, remove, and mark tasks as complete, demonstrating the use of Bloc for state management and event-driven updates.
@@ -24,6 +25,11 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 - `posts`: A basic CRUD for posts. Focused on data manipulation and simple user interaction.
 - `login`: A basic CRUD for login.
 
+# Structure creation
+- `navigation and routing`
+- `app exceptions`
+- `splash screen`
+- `user model and login api`
 
 ## Prerequisites
 
