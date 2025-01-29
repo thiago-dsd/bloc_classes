@@ -36,6 +36,8 @@ Learn more about the library in the [official Bloc documentation](https://blocli
 Before diving into the examples, ensure you have the following installed:
 - Flutter SDK (latest version)
 - Dart
+- Understanding abaout folder structure.
+- Packages use.
 - A basic understanding of Flutter development
 
 ## How to Use
